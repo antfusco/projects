@@ -18,7 +18,7 @@ class Card:
 class Deck:
 
     def __init__(self):
-        self.deck = []  # start with an empty list
+        self.deck = []
         for suit in suits:
             for rank in ranks:
                 my_card = Card(suit, rank)
@@ -40,9 +40,9 @@ class Deck:
 
 class Hand:
     def __init__(self):
-        self.cards = []  # start with an empty list as we did in the Deck class
-        self.value = 0  # start with zero value
-        self.aces = 0  # add an attribute to keep track of aces
+        self.cards = []
+        self.value = 0
+        self.aces = 0
 
     def add_card(self,card):
         self.cards.append(card)
@@ -60,7 +60,7 @@ class Hand:
 class Chips:
 
     def __init__(self):
-        self.total = 100  # This can be set to a default value or supplied by a user input
+        self.total = 100
         self.bet = 0
 
     def win_bet(self):
@@ -94,7 +94,7 @@ def hit(deck,hand):
     print(f"The total value is {hand.value}")
 
 def hit_or_stand(deck,hand):
-    global playing  # to control an upcoming while loop
+    global playing
     while True:
         action = input('Hit or Stand? ')
         if action == 'hit' or action == 'Hit':
@@ -158,7 +158,7 @@ while game_on:
     # Show cards (but keep one dealer card hidden)
     show_some(player_hand, dealer_hand)
     playing = True
-    while playing:  # recall this variable from our hit_or_stand function
+    while playing:
         hit_or_stand(my_deck,player_hand)
         if player_hand.value > 21:
             player_busts(player_chips)
@@ -170,8 +170,6 @@ while game_on:
         while dealer_hand.value < 17:
             hit(my_deck,dealer_hand)
 
-        # Show all cards
-        #show_all(player_hand, dealer_hand)
         # Run different winning scenarios
         if dealer_hand.value > 21:
             dealer_busts(player_chips)
